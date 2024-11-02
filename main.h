@@ -1,5 +1,6 @@
 #ifndef MAIN_H_INCLUDED
 #define MAIN_H_INCLUDED
+#include <fstream>
  
 typedef int FXPT2DOT30;
  
