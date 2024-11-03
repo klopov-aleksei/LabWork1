@@ -1,7 +1,8 @@
 #ifndef MAIN_H_INCLUDED
 #define MAIN_H_INCLUDED
 #include <fstream>
- 
+#include <cstdint>
+
 typedef int FXPT2DOT30;
  
 typedef struct {
@@ -17,10 +18,10 @@ typedef struct {
 } CIEXYZTRIPLE;
  
 typedef struct {
-    unsigned short bfType;
+    std::uint16_t bfType;
     unsigned int   bfSize;
-    unsigned short bfReserved1;
-    unsigned short bfReserved2;
+    std::uint16_t bfReserved1;
+    std::uint16_t bfReserved2;
     unsigned int   bfOffBits;
 } BITMAPFILEHEADER;
  
@@ -28,8 +29,8 @@ typedef struct {
     unsigned int   biSize;
     unsigned int   biWidth;
     unsigned int   biHeight;
-    unsigned short biPlanes;
-    unsigned short biBitCount;
+    std::uint16_t biPlanes;
+    std::uint16_t biBitCount;
     unsigned int   biCompression;
     unsigned int   biSizeImage;
     unsigned int   biXPelsPerMeter;
@@ -58,6 +59,7 @@ typedef struct {
     unsigned char  rgbReserved;
 } RGBQUAD;
  
+// reading a file sequentially (byte by byte)
 template <typename Type>
 void read(std::ifstream &fp, Type &result, std::size_t size) {
     fp.read(reinterpret_cast<char*>(&result), size);
