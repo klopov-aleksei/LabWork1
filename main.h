@@ -1,70 +1,42 @@
-#ifndef MAIN_H_INCLUDED
-#define MAIN_H_INCLUDED
-#include <fstream>
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <cstdint>
 
-typedef int FXPT2DOT30;
- 
-typedef struct {
-    FXPT2DOT30 ciexyzX;
-    FXPT2DOT30 ciexyzY;
-    FXPT2DOT30 ciexyzZ;
-} CIEXYZ;
- 
-typedef struct {
-    CIEXYZ  ciexyzRed; 
-    CIEXYZ  ciexyzGreen; 
-    CIEXYZ  ciexyzBlue; 
-} CIEXYZTRIPLE;
- 
-typedef struct {
-    std::uint16_t bfType;
-    unsigned int   bfSize;
-    std::uint16_t bfReserved1;
-    std::uint16_t bfReserved2;
-    unsigned int   bfOffBits;
-} BITMAPFILEHEADER;
- 
-typedef struct {
-    unsigned int   biSize;
-    unsigned int   biWidth;
-    unsigned int   biHeight;
-    std::uint16_t biPlanes;
-    std::uint16_t biBitCount;
-    unsigned int   biCompression;
-    unsigned int   biSizeImage;
-    unsigned int   biXPelsPerMeter;
-    unsigned int   biYPelsPerMeter;
-    unsigned int   biClrUsed;
-    unsigned int   biClrImportant;
-    unsigned int   biRedMask;
-    unsigned int   biGreenMask;
-    unsigned int   biBlueMask;
-    unsigned int   biAlphaMask;
-    unsigned int   biCSType;
-    CIEXYZTRIPLE   biEndpoints;
-    unsigned int   biGammaRed;
-    unsigned int   biGammaGreen;
-    unsigned int   biGammaBlue;
-    unsigned int   biIntent;
-    unsigned int   biProfileData;
-    unsigned int   biProfileSize;
-    unsigned int   biReserved;
-} BITMAPINFOHEADER;
- 
-typedef struct {
-    unsigned char  rgbBlue;
-    unsigned char  rgbGreen;
-    unsigned char  rgbRed;
-    unsigned char  rgbReserved;
-} RGBQUAD;
- 
-// reading a file sequentially (byte by byte)
-template <typename Type>
-void read(std::ifstream &fp, Type &result, std::size_t size) {
-    fp.read(reinterpret_cast<char*>(&result), size);
-}
- 
-unsigned char bitextract(const unsigned int byte, const unsigned int mask);
- 
+#pragma pack(push, 1) // Ensure no padding in structs
+
+// BMP File header
+struct BITMAPFILEHEADER {
+    uint16_t bfType;
+    uint32_t bfSize;
+    uint16_t bfReserved1;
+    uint16_t bfReserved2;
+    uint32_t bfOffBits;
+};
+
+// BMP Info header
+struct BITMAPINFOHEADER {
+    uint32_t biSize;
+    int32_t biWidth;
+    int32_t biHeight;
+    uint16_t biPlanes;
+    uint16_t biBitCount;
+    uint32_t biCompression;
+    uint32_t biSizeImage;
+    int32_t biXPelsPerMeter;
+    int32_t biYPelsPerMeter;
+    uint32_t biClrUsed;
+    uint32_t biClrImportant;
+};
+
+// RGBQUAD struct for 24-bit BMP color information
+struct RGBQUAD {
+    uint8_t rgbBlue;
+    uint8_t rgbGreen;
+    uint8_t rgbRed;
+    uint8_t rgbReserved; // Ensure compatibility, though 24-bit BMP doesn't use it
+};
+
+#pragma pack(pop)
+
 #endif
