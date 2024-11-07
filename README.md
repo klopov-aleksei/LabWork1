@@ -17,4 +17,4 @@ make
 
 ## Run
 
-./bmp
+./start
