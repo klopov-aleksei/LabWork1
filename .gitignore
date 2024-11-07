@@ -65,4 +65,6 @@ Release/
 *.Thumbs.db
 
 # Project specific
-sample.bmp
+rotated_90_clockwise.bmp
+rotated_90_counterclockwise.bmp
+gaussian_filtered.bmp

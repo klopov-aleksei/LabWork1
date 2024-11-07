@@ -1,3 +1,5 @@
+//Klopov Aleksei - LabWork1 - st130153@student.spbu.ru
+
 #include "bmp_reader.h"
 #include <iostream>
 
@@ -18,9 +20,8 @@ bool loadBMP(const char *fileName, BITMAPFILEHEADER &fileHeader, BITMAPINFOHEADE
 
     int width = fileInfoHeader.biWidth;
     int height = abs(fileInfoHeader.biHeight);
-    int padding = (4 - (width * 3) % 4) % 4; // Calculate padding
+    int padding = (4 - (width * 3) % 4) % 4; // сalculating padding
 
-    // Allocate memory for image data
     rgbInfo = new RGBQUAD*[height];
     for (int i = 0; i < height; ++i) {
         rgbInfo[i] = new RGBQUAD[width];
@@ -30,10 +31,10 @@ bool loadBMP(const char *fileName, BITMAPFILEHEADER &fileHeader, BITMAPINFOHEADE
 
     for (int i = height - 1; i >= 0; --i) {
         for (int j = 0; j < width; ++j) {
-            fileStream.read(reinterpret_cast<char*>(&rgbInfo[i][j]), 3); // Read RGB
+            fileStream.read(reinterpret_cast<char*>(&rgbInfo[i][j]), 3);
             rgbInfo[i][j].rgbReserved = 0;
         }
-        fileStream.ignore(padding); // Skip padding
+        fileStream.ignore(padding);
     }
 
     return true;
@@ -57,9 +58,9 @@ bool saveBMP(const char *fileName, const BITMAPFILEHEADER &fileHeader, const BIT
 
     for (int i = height - 1; i >= 0; --i) {
         for (int j = 0; j < width; ++j) {
-            fileStream.write(reinterpret_cast<const char*>(&rgbInfo[i][j]), 3); // Write RGB
+            fileStream.write(reinterpret_cast<const char*>(&rgbInfo[i][j]), 3);
         }
-        fileStream.write("\0\0\0", padding); // Write padding
+        fileStream.write("\0\0\0", padding); // writing padding
     }
 
     return true;

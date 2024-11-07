@@ -1,3 +1,5 @@
+//Klopov Aleksei - LabWork1 - st130153@student.spbu.ru
+
 #include "bmp_reader.h"
 #include "rotation.h"
 #include "filters.h"
@@ -14,12 +16,10 @@ int main(int argc, char *argv[]) {
     BITMAPINFOHEADER fileInfoHeader;
     RGBQUAD **rgbInfo = nullptr;
 
-    // Load the BMP file
     if (!loadBMP(fileName, fileHeader, fileInfoHeader, rgbInfo)) {
         return 0;
     }
 
-    // Rotate 90 degrees clockwise and save
     {
         RGBQUAD **rotatedClockwise = rotate90Clockwise(rgbInfo, fileInfoHeader.biWidth, fileInfoHeader.biHeight);
         std::swap(fileInfoHeader.biWidth, fileInfoHeader.biHeight);
@@ -27,10 +27,9 @@ int main(int argc, char *argv[]) {
             std::cerr << "Failed to save rotated_90_clockwise.bmp" << std::endl;
         }
         cleanupRGBInfo(rotatedClockwise, fileInfoHeader.biHeight);
-        std::swap(fileInfoHeader.biWidth, fileInfoHeader.biHeight); // Restore dimensions
+        std::swap(fileInfoHeader.biWidth, fileInfoHeader.biHeight);
     }
 
-    // Rotate 90 degrees counterclockwise and save
     {
         RGBQUAD **rotatedCounterClockwise = rotate90CounterClockwise(rgbInfo, fileInfoHeader.biWidth, fileInfoHeader.biHeight);
         std::swap(fileInfoHeader.biWidth, fileInfoHeader.biHeight);
@@ -38,10 +37,9 @@ int main(int argc, char *argv[]) {
             std::cerr << "Failed to save rotated_90_counterclockwise.bmp" << std::endl;
         }
         cleanupRGBInfo(rotatedCounterClockwise, fileInfoHeader.biHeight);
-        std::swap(fileInfoHeader.biWidth, fileInfoHeader.biHeight); // Restore dimensions
+        std::swap(fileInfoHeader.biWidth, fileInfoHeader.biHeight);
     }
 
-    // Apply Gaussian filter and save
     {
         applyGaussianFilter(rgbInfo, fileInfoHeader.biWidth, fileInfoHeader.biHeight);
         if (!saveBMP("gaussian_filtered.bmp", fileHeader, fileInfoHeader, rgbInfo)) {
@@ -49,7 +47,6 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    // Clean up original RGB data
     cleanupRGBInfo(rgbInfo, fileInfoHeader.biHeight);
 
     return 0;

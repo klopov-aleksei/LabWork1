@@ -1,11 +1,12 @@
+//Klopov Aleksei - LabWork1 - st130153@student.spbu.ru
+
 #ifndef MAIN_H
 #define MAIN_H
 
 #include <cstdint>
 
-#pragma pack(push, 1) // Ensure no padding in structs
+#pragma pack(push, 1) // no padding in structs
 
-// BMP File header
 struct BITMAPFILEHEADER {
     uint16_t bfType;
     uint32_t bfSize;
@@ -14,7 +15,6 @@ struct BITMAPFILEHEADER {
     uint32_t bfOffBits;
 };
 
-// BMP Info header
 struct BITMAPINFOHEADER {
     uint32_t biSize;
     int32_t biWidth;
@@ -34,7 +34,7 @@ struct RGBQUAD {
     uint8_t rgbBlue;
     uint8_t rgbGreen;
     uint8_t rgbRed;
-    uint8_t rgbReserved; // Ensure compatibility, though 24-bit BMP doesn't use it
+    uint8_t rgbReserved; // 24-bit BMP doesn't use it, but I did it anyway for compatibility
 };
 
 #pragma pack(pop)

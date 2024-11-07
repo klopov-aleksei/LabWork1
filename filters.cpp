@@ -1,3 +1,5 @@
+//Klopov Aleksei - LabWork1 - st130153@student.spbu.ru
+
 #include "filters.h"
 #include <cmath>
 
