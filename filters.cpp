@@ -13,11 +13,13 @@ void applyGaussianFilter(RGBQUAD **rgbInfo, unsigned int width, unsigned int hei
         { 1 / 273.0, 4 / 273.0,  7 / 273.0,  4 / 273.0, 1 / 273.0 }
     };
 
+    // to store filtered results
     RGBQUAD **temp = new RGBQUAD*[height];
     for (unsigned int i = 0; i < height; ++i) {
         temp[i] = new RGBQUAD[width];
     }
 
+    // to each pixel excluding boundaries
     for (unsigned int y = 2; y < height - 2; ++y) {
         for (unsigned int x = 2; x < width - 2; ++x) {
             float red = 0, green = 0, blue = 0;
@@ -35,9 +37,19 @@ void applyGaussianFilter(RGBQUAD **rgbInfo, unsigned int width, unsigned int hei
         }
     }
 
-    for (unsigned int i = 0; i < height; ++i) {
-        delete[] rgbInfo[i];
-        rgbInfo[i] = temp[i];
+    for (unsigned int y = 0; y < height; ++y) {
+        for (unsigned int x = 0; x < width; ++x) {
+            if (y < 2 || y >= height - 2 || x < 2 || x >= width - 2) {
+                temp[y][x] = rgbInfo[y][x];
+            }
+        }
+    }
+
+    for (unsigned int y = 0; y < height; ++y) {
+        for (unsigned int x = 0; x < width; ++x) {
+            rgbInfo[y][x] = temp[y][x];
+        }
+        delete[] temp[y];
     }
     delete[] temp;
 }
