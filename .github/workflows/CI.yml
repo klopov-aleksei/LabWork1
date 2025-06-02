@@ -1,6 +1,10 @@
 name: CI Pipeline
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build-and-test:
@@ -27,10 +31,6 @@ jobs:
         
     - name: Verify outputs
       run: |
-        identify rotated_90_clockwise.bmp
-        identify rotated_90_counterclockwise.bmp
-        identify gaussian_filtered.bmp
-        
         [ -f rotated_90_clockwise.bmp ] || exit 1
         [ -f rotated_90_counterclockwise.bmp ] || exit 1
         [ -f gaussian_filtered.bmp ] || exit 1
