@@ -1,0 +1,51 @@
+\begin{theindex}
+
+  \item {applyGaussianFilter}
+    \subitem {filters.h}, \hyperpage{12}
+
+  \indexspace
+
+  \item {BITMAPFILEHEADER}, \hyperpage{5}
+  \item {BITMAPINFOHEADER}, \hyperpage{5}
+  \item {bmp\_reader.h}, \hyperpage{9}
+    \subitem {cleanupRGBInfo}, \hyperpage{10}
+    \subitem {loadBMP}, \hyperpage{11}
+    \subitem {saveBMP}, \hyperpage{11}
+
+  \indexspace
+
+  \item {cleanupRGBInfo}
+    \subitem {bmp\_reader.h}, \hyperpage{10}
+
+  \indexspace
+
+  \item {filters.h}, \hyperpage{11}
+    \subitem {applyGaussianFilter}, \hyperpage{12}
+
+  \indexspace
+
+  \item {loadBMP}
+    \subitem {bmp\_reader.h}, \hyperpage{11}
+
+  \indexspace
+
+  \item {main.cpp}, \hyperpage{13}
+  \item {main.h}, \hyperpage{14}
+
+  \indexspace
+
+  \item {RGBQUAD}, \hyperpage{6}
+  \item {rotate90Clockwise}
+    \subitem {rotation.h}, \hyperpage{16}
+  \item {rotate90CounterClockwise}
+    \subitem {rotation.h}, \hyperpage{17}
+  \item {rotation.h}, \hyperpage{15}
+    \subitem {rotate90Clockwise}, \hyperpage{16}
+    \subitem {rotate90CounterClockwise}, \hyperpage{17}
+
+  \indexspace
+
+  \item {saveBMP}
+    \subitem {bmp\_reader.h}, \hyperpage{11}
+
+\end{theindex}

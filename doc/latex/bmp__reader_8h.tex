@@ -1,0 +1,107 @@
+\hypertarget{bmp__reader_8h}{}\doxysection{bmp\+\_\+reader.\+h File Reference}
+\label{bmp__reader_8h}\index{bmp\_reader.h@{bmp\_reader.h}}
+
+
+BMP file I/O operations.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+Include dependency graph for bmp\+\_\+reader.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{bmp__reader_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{bmp__reader_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{bmp__reader_8h_aec7e5209bb127164a1c560ef9cc47ba2}{load\+BMP}} (const char $\ast$file\+Name, \mbox{\hyperlink{structBITMAPFILEHEADER}{BITMAPFILEHEADER}} \&file\+Header, \mbox{\hyperlink{structBITMAPINFOHEADER}{BITMAPINFOHEADER}} \&file\+Info\+Header, \mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$\&rgb\+Info)
+\begin{DoxyCompactList}\small\item\em Loads BMP file into memory. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{bmp__reader_8h_a581c8c331c90213b3ccae8d3a8e075b3}{save\+BMP}} (const char $\ast$file\+Name, const \mbox{\hyperlink{structBITMAPFILEHEADER}{BITMAPFILEHEADER}} \&file\+Header, const \mbox{\hyperlink{structBITMAPINFOHEADER}{BITMAPINFOHEADER}} \&file\+Info\+Header, \mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$rgb\+Info)
+\begin{DoxyCompactList}\small\item\em Saves BMP file from memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bmp__reader_8h_a228c568951129d0ef7403bf5b9474113}{cleanup\+RGBInfo}} (\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$\&rgb\+Info, unsigned int height)
+\begin{DoxyCompactList}\small\item\em Deallocates memory for pixel array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+BMP file I/O operations. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{bmp__reader_8h_a228c568951129d0ef7403bf5b9474113}\label{bmp__reader_8h_a228c568951129d0ef7403bf5b9474113}} 
+\index{bmp\_reader.h@{bmp\_reader.h}!cleanupRGBInfo@{cleanupRGBInfo}}
+\index{cleanupRGBInfo@{cleanupRGBInfo}!bmp\_reader.h@{bmp\_reader.h}}
+\doxysubsubsection{\texorpdfstring{cleanupRGBInfo()}{cleanupRGBInfo()}}
+{\footnotesize\ttfamily void cleanup\+RGBInfo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$\&}]{rgb\+Info,  }\item[{unsigned int}]{height }\end{DoxyParamCaption})}
+
+
+
+Deallocates memory for pixel array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rgb\+Info} & Reference to 2D pixel array \\
+\hline
+{\em height} & Image height (number of rows) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bmp__reader_8h_aec7e5209bb127164a1c560ef9cc47ba2}\label{bmp__reader_8h_aec7e5209bb127164a1c560ef9cc47ba2}} 
+\index{bmp\_reader.h@{bmp\_reader.h}!loadBMP@{loadBMP}}
+\index{loadBMP@{loadBMP}!bmp\_reader.h@{bmp\_reader.h}}
+\doxysubsubsection{\texorpdfstring{loadBMP()}{loadBMP()}}
+{\footnotesize\ttfamily bool load\+BMP (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+Name,  }\item[{\mbox{\hyperlink{structBITMAPFILEHEADER}{BITMAPFILEHEADER}} \&}]{file\+Header,  }\item[{\mbox{\hyperlink{structBITMAPINFOHEADER}{BITMAPINFOHEADER}} \&}]{file\+Info\+Header,  }\item[{\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$\&}]{rgb\+Info }\end{DoxyParamCaption})}
+
+
+
+Loads BMP file into memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & Path to BMP file \\
+\hline
+{\em file\+Header} & Reference to file header structure \\
+\hline
+{\em file\+Info\+Header} & Reference to info header structure \\
+\hline
+{\em rgb\+Info} & Reference to 2D pixel array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bmp__reader_8h_a581c8c331c90213b3ccae8d3a8e075b3}\label{bmp__reader_8h_a581c8c331c90213b3ccae8d3a8e075b3}} 
+\index{bmp\_reader.h@{bmp\_reader.h}!saveBMP@{saveBMP}}
+\index{saveBMP@{saveBMP}!bmp\_reader.h@{bmp\_reader.h}}
+\doxysubsubsection{\texorpdfstring{saveBMP()}{saveBMP()}}
+{\footnotesize\ttfamily bool save\+BMP (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+Name,  }\item[{const \mbox{\hyperlink{structBITMAPFILEHEADER}{BITMAPFILEHEADER}} \&}]{file\+Header,  }\item[{const \mbox{\hyperlink{structBITMAPINFOHEADER}{BITMAPINFOHEADER}} \&}]{file\+Info\+Header,  }\item[{\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$}]{rgb\+Info }\end{DoxyParamCaption})}
+
+
+
+Saves BMP file from memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & Output file path \\
+\hline
+{\em file\+Header} & File header structure \\
+\hline
+{\em file\+Info\+Header} & Info header structure \\
+\hline
+{\em rgb\+Info} & 2D pixel array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, false otherwise 
+\end{DoxyReturn}

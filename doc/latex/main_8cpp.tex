@@ -1,0 +1,47 @@
+\hypertarget{main_8cpp}{}\doxysection{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Main program for image processing.  
+
+
+{\ttfamily \#include \char`\"{}bmp\+\_\+reader.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rotation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}filters.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main program for image processing. 
+
+This program processes BMP images by\+:
+\begin{DoxyEnumerate}
+\item Rotating 90° clockwise
+\item Rotating 90° counter-\/clockwise
+\item Applying Gaussian blur filter
+\end{DoxyEnumerate}
+
+Output files\+:
+\begin{DoxyItemize}
+\item rotated\+\_\+90\+\_\+clockwise.\+bmp
+\item rotated\+\_\+90\+\_\+counterclockwise.\+bmp
+\item gaussian\+\_\+filtered.\+bmp
+\end{DoxyItemize}
+
+Usage\+: ./start $<$input\+\_\+file.\+bmp$>$ 

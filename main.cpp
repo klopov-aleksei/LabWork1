@@ -1,9 +1,30 @@
 //Klopov Aleksei - LabWork1 - st130153@student.spbu.ru
 
+/**
+ * @file main.cpp
+ * @brief Main program for image processing
+ * 
+ * @details
+ * This program processes BMP images by:
+ * 1. Rotating 90° clockwise
+ * 2. Rotating 90° counter-clockwise
+ * 3. Applying Gaussian blur filter
+ * 
+ * Output files:
+ * - rotated_90_clockwise.bmp
+ * - rotated_90_counterclockwise.bmp
+ * - gaussian_filtered.bmp
+ * 
+ * Usage:
+ * ./start <input_file.bmp>
+ */
+
 #include "bmp_reader.h"
 #include "rotation.h"
 #include "filters.h"
 #include <iostream>
+#include <chrono>
+#include <iomanip>
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -20,8 +41,15 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
+    std::chrono::high_resolution_clock::time_point start, end;
+    double duration;
     {
+        start = std::chrono::high_resolution_clock::now();
         RGBQUAD **rotatedClockwise = rotate90Clockwise(rgbInfo, fileInfoHeader.biWidth, fileInfoHeader.biHeight);
+        end = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration<double, std::milli>(end - start).count();
+        std::cout << "Clockwise rotation: " << std::fixed << std::setprecision(3) << duration << " ms" << std::endl;
+
         std::swap(fileInfoHeader.biWidth, fileInfoHeader.biHeight);
         if (!saveBMP("rotated_90_clockwise.bmp", fileHeader, fileInfoHeader, rotatedClockwise)) {
             std::cerr << "Failed to save rotated_90_clockwise.bmp" << std::endl;
@@ -31,7 +59,12 @@ int main(int argc, char *argv[]) {
     }
 
     {
+        start = std::chrono::high_resolution_clock::now();
         RGBQUAD **rotatedCounterClockwise = rotate90CounterClockwise(rgbInfo, fileInfoHeader.biWidth, fileInfoHeader.biHeight);
+        end = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration<double, std::milli>(end - start).count();
+        std::cout << "Counter-clockwise rotation: " << std::fixed << std::setprecision(3) << duration << " ms" << std::endl;
+
         std::swap(fileInfoHeader.biWidth, fileInfoHeader.biHeight);
         if (!saveBMP("rotated_90_counterclockwise.bmp", fileHeader, fileInfoHeader, rotatedCounterClockwise)) {
             std::cerr << "Failed to save rotated_90_counterclockwise.bmp" << std::endl;
@@ -41,7 +74,12 @@ int main(int argc, char *argv[]) {
     }
 
     {
+        start = std::chrono::high_resolution_clock::now();
         applyGaussianFilter(rgbInfo, fileInfoHeader.biWidth, fileInfoHeader.biHeight);
+        end = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration<double, std::milli>(end - start).count();
+        std::cout << "Gaussian filter: " << std::fixed << std::setprecision(3) << duration << " ms" << std::endl;
+        
         if (!saveBMP("gaussian_filtered.bmp", fileHeader, fileInfoHeader, rgbInfo)) {
             std::cerr << "Failed to save gaussian_filtered.bmp" << std::endl;
         }
@@ -51,4 +89,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-

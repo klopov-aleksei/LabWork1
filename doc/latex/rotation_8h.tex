@@ -1,0 +1,83 @@
+\hypertarget{rotation_8h}{}\doxysection{rotation.\+h File Reference}
+\label{rotation_8h}\index{rotation.h@{rotation.h}}
+
+
+Image rotation operations.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Include dependency graph for rotation.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=144pt]{rotation_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=144pt]{rotation_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$ \mbox{\hyperlink{rotation_8h_ad959cc1f871cbe5efe1b4ed753795d16}{rotate90\+Clockwise}} (\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$rgb\+Info, unsigned int width, unsigned int height)
+\begin{DoxyCompactList}\small\item\em Rotates image 90° clockwise. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$ \mbox{\hyperlink{rotation_8h_a861e4b02d9a74232794f30dd2fed8827}{rotate90\+Counter\+Clockwise}} (\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$rgb\+Info, unsigned int width, unsigned int height)
+\begin{DoxyCompactList}\small\item\em Rotates image 90° counter-\/clockwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Image rotation operations. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rotation_8h_ad959cc1f871cbe5efe1b4ed753795d16}\label{rotation_8h_ad959cc1f871cbe5efe1b4ed753795d16}} 
+\index{rotation.h@{rotation.h}!rotate90Clockwise@{rotate90Clockwise}}
+\index{rotate90Clockwise@{rotate90Clockwise}!rotation.h@{rotation.h}}
+\doxysubsubsection{\texorpdfstring{rotate90Clockwise()}{rotate90Clockwise()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRGBQUAD}{RGBQUAD}}$\ast$$\ast$ rotate90\+Clockwise (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$}]{rgb\+Info,  }\item[{unsigned int}]{width,  }\item[{unsigned int}]{height }\end{DoxyParamCaption})}
+
+
+
+Rotates image 90° clockwise. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rgb\+Info} & 2D pixel array (input image) \\
+\hline
+{\em width} & Image width \\
+\hline
+{\em height} & Image height \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to new rotated pixel array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rotation_8h_a861e4b02d9a74232794f30dd2fed8827}\label{rotation_8h_a861e4b02d9a74232794f30dd2fed8827}} 
+\index{rotation.h@{rotation.h}!rotate90CounterClockwise@{rotate90CounterClockwise}}
+\index{rotate90CounterClockwise@{rotate90CounterClockwise}!rotation.h@{rotation.h}}
+\doxysubsubsection{\texorpdfstring{rotate90CounterClockwise()}{rotate90CounterClockwise()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRGBQUAD}{RGBQUAD}}$\ast$$\ast$ rotate90\+Counter\+Clockwise (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$}]{rgb\+Info,  }\item[{unsigned int}]{width,  }\item[{unsigned int}]{height }\end{DoxyParamCaption})}
+
+
+
+Rotates image 90° counter-\/clockwise. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rgb\+Info} & 2D pixel array (input image) \\
+\hline
+{\em width} & Image width \\
+\hline
+{\em height} & Image height \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to new rotated pixel array 
+\end{DoxyReturn}
