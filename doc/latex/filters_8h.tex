@@ -1,0 +1,59 @@
+\hypertarget{filters_8h}{}\doxysection{filters.\+h File Reference}
+\label{filters_8h}\index{filters.h@{filters.h}}
+
+
+Image filter operations.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Include dependency graph for filters.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=133pt]{filters_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{filters_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{filters_8h_a05d445b4a3e4c4904a7e94ceadc0c1b9}{apply\+Gaussian\+Filter}} (\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$rgb\+Info, unsigned int width, unsigned int height)
+\begin{DoxyCompactList}\small\item\em Applies Gaussian blur filter to image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Image filter operations. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{filters_8h_a05d445b4a3e4c4904a7e94ceadc0c1b9}\label{filters_8h_a05d445b4a3e4c4904a7e94ceadc0c1b9}} 
+\index{filters.h@{filters.h}!applyGaussianFilter@{applyGaussianFilter}}
+\index{applyGaussianFilter@{applyGaussianFilter}!filters.h@{filters.h}}
+\doxysubsubsection{\texorpdfstring{applyGaussianFilter()}{applyGaussianFilter()}}
+{\footnotesize\ttfamily void apply\+Gaussian\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRGBQUAD}{RGBQUAD}} $\ast$$\ast$}]{rgb\+Info,  }\item[{unsigned int}]{width,  }\item[{unsigned int}]{height }\end{DoxyParamCaption})}
+
+
+
+Applies Gaussian blur filter to image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rgb\+Info} & 2D pixel array (input/output image) \\
+\hline
+{\em width} & Image width \\
+\hline
+{\em height} & Image height \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Uses 5x5 kernel with fixed coefficients 
+\end{DoxyNote}

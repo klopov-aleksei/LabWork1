@@ -1,5 +1,24 @@
 //Klopov Aleksei - LabWork1 - st130153@student.spbu.ru
 
+/**
+ * @file main.cpp
+ * @brief Main program for image processing
+ * 
+ * @details
+ * This program processes BMP images by:
+ * 1. Rotating 90° clockwise
+ * 2. Rotating 90° counter-clockwise
+ * 3. Applying Gaussian blur filter
+ * 
+ * Output files:
+ * - rotated_90_clockwise.bmp
+ * - rotated_90_counterclockwise.bmp
+ * - gaussian_filtered.bmp
+ * 
+ * Usage:
+ * ./start <input_file.bmp>
+ */
+
 #include "bmp_reader.h"
 #include "rotation.h"
 #include "filters.h"
@@ -70,4 +89,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-

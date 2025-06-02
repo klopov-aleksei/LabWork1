@@ -27,17 +27,17 @@ jobs:
       
     - name: Run tests with ${{ matrix.threads }} threads on ${{ matrix.sample }}
       run: |
-        OMP_NUM_THREADS=${{ matrix.threads }} ./start "BMP samples/${{ matrix.sample }}"
+        OMP_NUM_THREADS=${{ matrix.threads }} ./start "BMP samples/${{ matrix.sample }}" > performance.log 2>&1
         
     - name: Verify outputs
       run: |
         [ -f rotated_90_clockwise.bmp ] || exit 1
         [ -f rotated_90_counterclockwise.bmp ] || exit 1
         [ -f gaussian_filtered.bmp ] || exit 1
-        
         rm rotated_*.bmp gaussian_filtered.bmp
       
-    - name: Performance log
+    - name: Show performance
       run: |
         echo "Performance for ${{ matrix.sample }} with ${{ matrix.threads }} threads:"
         cat performance.log
+        rm performance.log
