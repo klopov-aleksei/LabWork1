@@ -2,6 +2,7 @@
 
 #include "filters.h"
 #include <cmath>
+#include <algorithm>
 
 void applyGaussianFilter(RGBQUAD **rgbInfo, unsigned int width, unsigned int height) {
     const int kernelSize = 5;
@@ -19,9 +20,12 @@ void applyGaussianFilter(RGBQUAD **rgbInfo, unsigned int width, unsigned int hei
         temp[i] = new RGBQUAD[width];
     }
 
-    // to each pixel excluding boundaries
-    for (unsigned int y = 2; y < height - 2; ++y) {
-        for (unsigned int x = 2; x < width - 2; ++x) {
+    const int h = static_cast<int>(height);
+    const int w = static_cast<int>(width);
+
+    #pragma omp parallel for collapse(2)
+    for (int y = 2; y < h - 2; y++) {
+        for (int x = 2; x < w - 2; x++) {
             float red = 0, green = 0, blue = 0;
             for (int ky = -2; ky <= 2; ++ky) {
                 for (int kx = -2; kx <= 2; ++kx) {
@@ -37,18 +41,18 @@ void applyGaussianFilter(RGBQUAD **rgbInfo, unsigned int width, unsigned int hei
         }
     }
 
-    for (unsigned int y = 0; y < height; ++y) {
-        for (unsigned int x = 0; x < width; ++x) {
-            if (y < 2 || y >= height - 2 || x < 2 || x >= width - 2) {
+    #pragma omp parallel for collapse(2)
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            if (y < 2 || y >= h - 2 || x < 2 || x >= w - 2) {
                 temp[y][x] = rgbInfo[y][x];
             }
         }
     }
 
-    for (unsigned int y = 0; y < height; ++y) {
-        for (unsigned int x = 0; x < width; ++x) {
-            rgbInfo[y][x] = temp[y][x];
-        }
+    #pragma omp parallel for
+    for (int y = 0; y < h; y++) {
+        std::copy(temp[y], temp[y] + w, rgbInfo[y]);
         delete[] temp[y];
     }
     delete[] temp;

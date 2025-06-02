@@ -9,8 +9,9 @@ RGBQUAD **rotate90Clockwise(RGBQUAD **rgbInfo, unsigned int width, unsigned int 
         rotated[i] = new RGBQUAD[height];
     }
 
-    for (unsigned int i = 0; i < height; ++i) {
-        for (unsigned int j = 0; j < width; ++j) {
+    #pragma omp parallel for collapse(2)
+    for (int i = 0; i < static_cast<int>(height); i++) {
+        for (int j = 0; j < static_cast<int>(width); j++) {
             rotated[j][height - i - 1] = rgbInfo[i][j];
         }
     }
@@ -24,8 +25,9 @@ RGBQUAD **rotate90CounterClockwise(RGBQUAD **rgbInfo, unsigned int width, unsign
         rotated[i] = new RGBQUAD[height];
     }
 
-    for (unsigned int i = 0; i < height; ++i) {
-        for (unsigned int j = 0; j < width; ++j) {
+    #pragma omp parallel for collapse(2)
+    for (int i = 0; i < static_cast<int>(height); i++) {
+        for (int j = 0; j < static_cast<int>(width); j++) {
             rotated[width - j - 1][i] = rgbInfo[i][j];
         }
     }
